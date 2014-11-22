@@ -1,0 +1,20 @@
+// Delete
+r.db("earthquake").table("quakes").delete();
+r.db("earthquake").table("quakes").indexDrop("geometry");
+
+// Load
+r.db("earthquake").table("quakes").insert(
+  r.http("earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson")("features")
+    .merge(function(quake) {
+      return {
+        geometry: r.point(
+          quake("geometry")("coordinates")(0),
+          quake("geometry")("coordinates")(1))
+      }
+    })
+);
+     
+r.db("earthquake").table("quakes").indexCreate("geometry", {geo: true});
+
+
+r.db("earthquake").table("quakes")
