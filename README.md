@@ -1,6 +1,8 @@
 # Rethink Earthquakes
 
-Clojure version of [http://rethinkdb.com/blog/earthquake-geojson/]
+Koa/React version of [http://rethinkdb.com/blog/earthquake-geojson/].
+
+Attempted Clojure version, ran into issues with Revise library for RethinkDB.
 
 
 ## License
