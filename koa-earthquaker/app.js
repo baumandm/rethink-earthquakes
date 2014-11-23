@@ -1,9 +1,11 @@
 var logger = require('koa-logger');
 var route = require('koa-route');
 var cors = require('koa-cors');
+var serve = require('koa-static');
 var koa = require('koa');
 var app = koa();
 
+// Rethink configuration
 var r = require("rethinkdb");
 
 var databaseConfig = {
@@ -24,24 +26,23 @@ var rrun = function *(query) {
     return result;
 };
 
-// middleware
+// Middleware
 app.use(logger());
 app.use(cors());
 
 
-// route middleware
-app.use(route.get('/', function *() {
-    this.body = 'Hello World';
-}));
+// Static website
+app.use(serve('dist'));
 
-app.use(route.get('/quakes', function *() {
+// API
+app.use(route.get('/api/quakes', function *() {
     this.body = yield rrun(
         r.table("quakes").orderBy(
             r.desc(r.row("mag")))
     );
 }));
 
-app.use(route.get('/quakes/nearest', function *() {
+app.use(route.get('/api/quakes/nearest', function *() {
     var range = parseFloat(this.query.range || 100),
         latitude = parseFloat(this.query.lat),
         longitude = parseFloat(this.query.long);

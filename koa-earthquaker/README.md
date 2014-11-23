@@ -10,9 +10,14 @@ Run with --harmony flag:
     npm install 
     node --harmony app.js
 
+Or use gulp:
+
+    npm install -g gulp
+    gulp server
+
 Open in a web browser:
 
-    http://localhost:3050/quakes/nearest?lat=35.68&long=138&range=400
+    http://localhost:3050/api/quakes/nearest?lat=35.68&long=138&range=400
 
 ## License
 
