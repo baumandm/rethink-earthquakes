@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
     gulpFilter = require('gulp-filter'),
+    concat = require('gulp-concat'),
     flatten = require('gulp-flatten');
 
 var bower = require('gulp-bower'),
@@ -7,6 +8,8 @@ var bower = require('gulp-bower'),
     
 var less = require('gulp-less'),
     concatCss = require('gulp-concat-css');
+
+var react = require('gulp-react');
 
 var nodemon = require('gulp-nodemon');
 
@@ -22,8 +25,8 @@ gulp.task('bower', ['bower-install'], function () {
 
     return gulp.src(mainBowerFiles())
         .pipe(jsFilter)
-        .pipe(flatten())
-        .pipe(gulp.dest('./dist/js/vendor'))
+        .pipe(concat('vendor.js'))
+        .pipe(gulp.dest('./dist/js'))
         .pipe(jsFilter.restore())
 
         .pipe(cssFilter)
@@ -35,6 +38,19 @@ gulp.task('bower', ['bower-install'], function () {
         .pipe(fontFilter)
         .pipe(flatten())
         .pipe(gulp.dest('./dist/fonts'));
+});
+
+gulp.task('jsx', function () {
+return gulp.src('src/**/*.jsx')
+    .pipe(concat('jsx.js'))
+    .pipe(react())
+    .pipe(gulp.dest('./dist/js'));
+});
+
+gulp.task('js', function () {
+return gulp.src('src/**/*.js')
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('./dist/js'));
 });
 
 gulp.task('less', function () {
@@ -73,6 +89,9 @@ gulp.task('server', function () {
 
 gulp.task('watch', function() {
     gulp.watch('./src/**/*.less', ['less']);
+    gulp.watch('./src/**/*.jsx', ['jsx']);
+    gulp.watch('./src/**/*.js', ['js']);
+    gulp.watch('./src/**/*.html', ['html']);
 });
 
-gulp.task('default', ['bower', 'html', 'fonts', 'images', 'less', 'server', 'watch']);
+gulp.task('default', ['bower', 'js', 'jsx', 'html', 'fonts', 'images', 'less', 'server', 'watch']);

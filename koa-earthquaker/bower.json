@@ -14,7 +14,12 @@
   ],
   "dependencies": {
     "jquery": "~2.1.1",
-    "fontawesome": "~4.2.0"
+    "fontawesome": "~4.2.0",
+    "react": "~0.12",
+    "leaflet": "~0.7.3",
+    "lodash": "~2.4.1",
+    "numeraljs": "~1.5.3",
+    "momentjs": "~2.8.4"
   },
   "devDependencies": {}
 }

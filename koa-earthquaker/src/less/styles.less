@@ -1,5 +1,95 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono);
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,300);
+
+html, body {
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    position:fixed;
+    margin:0;
+    padding:0;
+}
+
+* {
+    box-sizing:border-box;
+}
+
+@header-height: 2.8rem;
+@header-background-color: #222;
+@header-color: #eee;
+
+@sidebar-width: 300px;
+
 body {
-    h1 {
-        font-size: 4.3rem;
+    height: 100%;
+
+    .header {
+        height: @header-height;
+        padding: .5em;
+
+        color: @header-color;
+        background-color: @header-background-color;
+
+        h1 {
+            font-family: 'Ubuntu Mono', serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+
+            font-size: calc(@header-height - 2*0.5em);
+            line-height: calc(@header-height - 2*0.5em);
+
+            margin: 0;
+        }
+    }
+
+    .earthquaker {
+        height: calc(100% - @header-height);
+    }
+
+    .quake-map {
+        margin-left: @sidebar-width;
+        height: 100%;
+
+        .map {
+            height: 100%;
+        }
+    }
+
+    .quake-list {
+        font-family: 'Raleway', sans-serif;
+
+        height: 100%;
+        width: @sidebar-width;
+        float: left;
+
+        border-right: 1px dotted #333;
+
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        overflow-y: auto;
+
+        li {
+            display: block;
+            padding: 1rem 1rem;
+
+            background-color: #E5E5E5;
+            border-bottom: 1px dotted #333;
+
+            font-size: 0.9rem;
+
+            .magnitude {
+                font-size: 2.0rem;
+                font-weight: 300;
+                vertical-align: middle;
+                margin-right: 2rem;
+
+                float: left;
+            }
+
+            .details {
+            }
+        }
     }
 }
