@@ -15,7 +15,11 @@ var nodemon = require('gulp-nodemon');
 
 var webpackOptions = {
     //cache: true,
+    devtool: 'source-map',
     module: {
+        preloaders: [
+            { test: /\.js$/, loader: 'source-map-loader', exclude: /node_modules/ }
+        ],
         loaders: [
             { test: /\.jsx$/, loader: 'jsx-loader?harmony'},
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' },
@@ -99,9 +103,10 @@ gulp.task('server', function () {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('./src/**/*.less', ['less']);
     gulp.watch(['./src/**/*.jsx', './src/**/*.js'], ['webpack']);
     gulp.watch('./src/**/*.html', ['html']);
 });
 
-gulp.task('default', ['bower', 'webpack', 'html', 'fonts', 'images', 'server', 'watch']);
+gulp.task('build', ['bower', 'webpack', 'html', 'fonts', 'images']);
+
+gulp.task('default', ['build', 'server', 'watch']);
