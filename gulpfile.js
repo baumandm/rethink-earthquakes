@@ -11,8 +11,6 @@ var bower = require('gulp-bower'),
 var less = require('gulp-less'),
     concatCss = require('gulp-concat-css');
 
-var react = require('gulp-react');
-
 var nodemon = require('gulp-nodemon');
 
 var webpackOptions = {
