@@ -13,7 +13,7 @@
     "koa": "^0.13.0",
     "koa-cors": "0.0.14",
     "koa-logger": "^1.2.2",
-    "koa-route": "^2.2.0",
+    "koa-route": "^2.4.0",
     "koa-static": "^1.4.7",
     "lodash": "^2.4.1",
     "moment": "^2.8.4",
