@@ -10,3 +10,6 @@ dist
 
 # RethinkDB
 rethinkdb_data
+
+# Sublime
+*.sublime-*
