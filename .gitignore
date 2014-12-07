@@ -1,0 +1,12 @@
+# Node.js
+node_modules
+npm-debug.log
+
+# Bower
+bower_components
+
+# Build
+dist
+
+# RethinkDB
+rethinkdb_data
