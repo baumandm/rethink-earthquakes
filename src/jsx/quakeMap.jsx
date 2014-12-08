@@ -18,7 +18,6 @@ var QuakeMap = React.createClass({
             attributionControl: false,
         });
 
-        map.on('click', this.onMapClick);
         map.locate({ setView: true, maxZoom: 6 });
 
         if (!_.isUndefined(navigator.geolocation)) {
@@ -39,12 +38,7 @@ var QuakeMap = React.createClass({
     },
 
     componentWillUnmount: function () {
-        this.map.off('click', this.onMapClick);
         this.map = null;
-    },
-
-    onMapClick: function () {
-        console.log('clicked');
     },
 
     render: function () {
