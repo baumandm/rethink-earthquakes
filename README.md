@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/baumandm/rethink-earthquakes.svg)](https://travis-ci.org/baumandm/rethink-earthquakes)
+
 # Rethink Earthquakes
 
 Koa & React version of [http://rethinkdb.com/blog/earthquake-geojson/]().
